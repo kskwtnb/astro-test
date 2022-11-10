@@ -1,0 +1,5 @@
+@use "sass:math";
+
+@function px2vw($value) {
+    @return math.div($value, 750)* 100vw;
+}

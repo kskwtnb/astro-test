@@ -1,0 +1,337 @@
+---
+    import Layout from '../layouts/Layout.astro';
+    import { gsap } from 'gsap';
+    import ScrollTrigger from 'gsap/ScrollTrigger';
+---
+
+<Layout title="Welcome to Astro.">
+    <section id="anchor_01">
+        <h2>【scrub: false ＆ end: 指定なし】スクロール量に関係なくアニメーションを実行（通常パターン）</h2>
+        <div class="trigger-area js-scroll-animation-trigger-1">
+            <div class="element element-01 js-scroll-animation-element-1">
+                トリガーエリアに<br>スクローラーが入った時点で<br>スクロール量に関係なく<br>アニメーションを実行
+            </div>
+        </div>
+    </section>
+
+    <section id="anchor_02">
+        <h2>【scrub: true】スクロール量にアニメーションの進捗を合わせる</h2>
+        <div class="trigger-area js-scroll-animation-trigger-2">
+            <div class="element element-02 js-scroll-animation-element-2">
+                トリガーエリアを対象に<br>スクロール量に合わせて<br>アニメーションの進捗が<br>連動して実行
+            </div>
+        </div>
+    </section>
+
+    <section id="anchor_03">
+        <h2>【scrub: Number】スクロール量にアニメーションの進捗を合わせてイージングを追加</h2>
+        <div class="trigger-area js-scroll-animation-trigger-3">
+            <div class="element element-03 js-scroll-animation-element-3">
+                トリガーエリアを対象に<br>スクロール量に合わせて<br>イージングしながら<br>スクロール量と連動して実行
+            </div>
+        </div>
+    </section>
+
+    <section id="anchor_04">
+        <h2>【scrub: true】スクロール量に複数要素のアニメーションの進捗を合わせてシーケンシャルに動かす（stagger）</h2>
+        <div class="trigger-area js-scroll-animation-trigger-4">
+            <p class="words">
+                <span class="group">
+                    <span class="js-scroll-animation-element-4">T</span>
+                    <span class="js-scroll-animation-element-4">E</span>
+                    <span class="js-scroll-animation-element-4">X</span>
+                    <span class="js-scroll-animation-element-4">T</span>
+                </span>
+                &nbsp;
+                <span class="group">
+                    <span class="js-scroll-animation-element-4">A</span>
+                    <span class="js-scroll-animation-element-4">N</span>
+                    <span class="js-scroll-animation-element-4">I</span>
+                    <span class="js-scroll-animation-element-4">M</span>
+                    <span class="js-scroll-animation-element-4">A</span>
+                    <span class="js-scroll-animation-element-4">T</span>
+                    <span class="js-scroll-animation-element-4">I</span>
+                    <span class="js-scroll-animation-element-4">O</span>
+                    <span class="js-scroll-animation-element-4">N</span>
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <section id="anchor_05">
+        <h2>【scrub: false ＆ end: 指定なし】スクロール量に関係なくアニメーションを実行（通常パターン）</h2>
+        <div class="trigger-area js-scroll-animation-trigger-5">
+            <p class="words">
+                <span class="group">
+                    <span class="js-scroll-animation-element-5">T</span>
+                    <span class="js-scroll-animation-element-5">E</span>
+                    <span class="js-scroll-animation-element-5">X</span>
+                    <span class="js-scroll-animation-element-5">T</span>
+                </span>
+                &nbsp;
+                <span class="group">
+                    <span class="js-scroll-animation-element-5">A</span>
+                    <span class="js-scroll-animation-element-5">N</span>
+                    <span class="js-scroll-animation-element-5">I</span>
+                    <span class="js-scroll-animation-element-5">M</span>
+                    <span class="js-scroll-animation-element-5">A</span>
+                    <span class="js-scroll-animation-element-5">T</span>
+                    <span class="js-scroll-animation-element-5">I</span>
+                    <span class="js-scroll-animation-element-5">O</span>
+                    <span class="js-scroll-animation-element-5">N</span>
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <section id="anchor_06">
+        <h2>scale</h2>
+        <div class="trigger-area js-scroll-animation-trigger-6">
+            <div class="element element-06 js-scroll-animation-element-6">
+                トリガーエリアを対象に<br>スクロール量に合わせて<br>イージングしながら<br>スクロール量と連動して実行
+            </div>
+        </div>
+    </section>
+
+    <section id="anchor_06">
+        <h2>scale</h2>
+        <div class="trigger-area js-scroll-animation-trigger-6">
+            <div class="element element-06 js-scroll-animation-element-6">
+                トリガーエリアを対象に<br>スクロール量に合わせて<br>イージングしながら<br>スクロール量と連動して実行
+            </div>
+        </div>
+    </section>
+
+
+</Layout>
+
+<script>
+    import gsap from 'gsap';
+    import ScrollTrigger from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo('.js-scroll-animation-element-1',
+        {
+            x: -120,
+            autoAlpha: 0
+        },
+        {
+            x: 120,
+            autoAlpha: 1,
+            delay: 0.1,
+            duration: 1.2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.js-scroll-animation-trigger-1',
+                start: 'top 90%',
+                scrub: false,
+                // markers: true
+            },
+        }
+    );
+
+    gsap.fromTo('.js-scroll-animation-element-2',
+        {
+            x: -120,
+            autoAlpha: 0
+        },
+        {
+            x: 120,
+            autoAlpha: 1,
+            delay: 0.1,
+            duration: 1.2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.js-scroll-animation-trigger-2',
+                start: 'top 80%',
+                end: 'bottom 30%',
+                scrub: true,
+                // markers: true
+            },
+        }
+    );
+
+    gsap.fromTo('.js-scroll-animation-element-3',
+        {
+            x: -120,
+            autoAlpha: 0
+        },
+        {
+            x: 120,
+            autoAlpha: 1,
+            delay: 0.1,
+            duration: 1.2,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.js-scroll-animation-trigger-3',
+                start: 'top 80%',
+                end: 'bottom 30%',
+                scrub: 2.4,
+                // markers: true
+            },
+        }
+    );
+
+    // ピンクのdivエリア
+    gsap.fromTo('.js-scroll-animation-element-4',
+        // 初期の状態
+        { y: '1em' },
+        // 最終の状態
+        {
+            y: 0,
+            delay: 0.1,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.js-scroll-animation-trigger-4',
+                start: 'top center',
+                end: 'bottom 100%',
+                scrub: true,
+                // markers: true
+            },
+            stagger: {
+                from: 'start',
+                amount: 1.8
+            }
+        }
+    );
+
+    gsap.fromTo('.js-scroll-animation-element-5',
+        { y: '1em' },
+        {
+            y: 0,
+            delay: 0.1,
+            duration: 0.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.js-scroll-animation-trigger-5',
+                start: 'top center',
+                // end: 'bottom center',
+                scrub: false,
+                // markers: true
+            },
+            stagger: {
+                from: 'start',
+                amount: 1.8
+            }
+        }
+    );
+
+    gsap.fromTo('.js-scroll-animation-element-6',
+        // 初期の状態
+        {
+            // x: -120,
+            autoAlpha: 0,
+            scale: 0.5,
+        },
+        // 最終の状態
+        {
+            // x: 120,
+            autoAlpha: 1,
+            scale: 1,
+            // delay: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.js-scroll-animation-trigger-6',
+                start: 'top center+=10%', //y軸50%からさらに10%プラス側に指定
+                end: 'bottom+=200 top', // 要素のbottomを下方向に200px
+                scrub: 0.5, // scrubに1とするとスクロールごとに1秒間アニメーションさせる
+                markers: true,
+                toggleActions: 'play puse',
+                // 以下、onイベント
+                // onEnter: () => {
+                //     play()
+                // },
+                // onEnterBack: () => {
+                //     play()
+                // },
+                // onLeaveBack: () => {
+                //     pause()
+                // },
+                // onLeave: () => {
+                //     pause()
+                // }
+            },
+        }
+    );
+
+
+
+
+</script>
+
+<style lang="scss">
+    main {
+        padding: 10rem 1.5rem;
+    }
+
+    section {
+        +section {
+            margin-top: 90px;
+        }
+
+        h2 {
+            font-size: 1rem;
+        }
+    }
+
+    .trigger-area {
+        height: 60vh;
+        background: rgb(255, 211, 211);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .trigger-area::before {
+        content: "アニメーションのトリガーエリア";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 12px;
+    }
+
+    .element {
+        width: 240px;
+        height: 240px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .element-01 {
+        background: #fc4f0b;
+        color: #fff;
+    }
+
+    .element-02 {
+        background: #04a75b;
+        color: #fff;
+    }
+
+    .element-03,
+    .element-06 {
+        background: #0450a7;
+        color: #fff;
+    }
+
+    .words {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        flex-wrap: wrap;
+    }
+
+    .group {
+        display: flex;
+        justify-content: center;
+        font-size: 46px;
+        font-weight: bold;
+        overflow: hidden;
+        line-height: 1;
+    }
+</style>

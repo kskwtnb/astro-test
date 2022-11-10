@@ -1,0 +1,29 @@
+---
+    const bigText: string = 'Project1';
+---
+
+<div class="project1">
+    <h1>This is <span class="text-gradient">{bigText}</span></h1>
+</div>
+
+<style lang="scss">
+    // @import '../assets/sass/_functions';
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin: 0;
+
+        span {
+            font-size: 1.2em;
+        }
+    }
+
+    .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
+</style>
